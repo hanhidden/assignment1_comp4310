@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">assignment1</string>
+
+    <string name="Welcome">Welcome To Trackify</string>
+    <string name="bt_home">LETS GO!</string>
+
+
+</resources>
