@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -24,7 +25,7 @@ public class activity_set_goal extends AppCompatActivity {
     EditText inputField ;
     RadioGroup intensityGroup;
     Button saveGoalButton;
-    TextView savedGoalsTextView;
+   ListView GoalsListView;
 
     ArrayList<Goal> goalsList;
 
@@ -38,10 +39,10 @@ public class activity_set_goal extends AppCompatActivity {
         inputField = findViewById(R.id.inputField);
         intensityGroup = findViewById(R.id.IntensityGroup);
         saveGoalButton = findViewById(R.id.saveGoalButton);
-        savedGoalsTextView = findViewById(R.id.savedGoalsTextView);
-      goalsList = new ArrayList<>();
-//intilize
-        goalsList.add(new Goal("Meditation", 30, "Intense", false));
+        GoalsListView = findViewById(R.id.GoalsListView);
+        goalsList = new ArrayList<>();
+        //intilize
+        goalsList.add(new Goal("Meditation", 30, "Intense"));
 
 
 
@@ -66,21 +67,27 @@ public class activity_set_goal extends AppCompatActivity {
                 selectedIntensity = selectedRadioButton.getText().toString();
             }
 
-            Goal newGoal = new Goal(selectedGoalType, numberAmount, selectedIntensity,false);
+            Goal newGoal = new Goal(selectedGoalType, numberAmount, selectedIntensity);
 
             goalsList.add(newGoal);
 
-            Toast.makeText(activity_set_goal.this, "Goal Saved: " + newGoal.toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity_set_goal.this, "Goal Saved" , Toast.LENGTH_SHORT).show();
 
 
-
-            StringBuilder goalsText = new StringBuilder("Saved Goals:\n");
+            ArrayList<String> Goals = new ArrayList<>();
 
             for (Goal goal : goalsList) {
-                goalsText.append("- ").append(goal.toString()).append("\n");
+                String unit = goal.getType().equalsIgnoreCase("Water") ? "cups" : "mins";
+                Goals.add(goal.getType() + " - " + goal.getNumber() + " " + unit + " - " + goal.getIntensity());
             }
 
-            savedGoalsTextView.setText(goalsText.toString());
+            ArrayAdapter<String> goalsAdapter = new ArrayAdapter<>(activity_set_goal.this, android.R.layout.simple_list_item_1, Goals);
+
+            GoalsListView.setAdapter(goalsAdapter);
+
+
+
+
 
         }
     });

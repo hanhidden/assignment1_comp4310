@@ -41,12 +41,12 @@ public class goals_view extends AppCompatActivity {
 
     private void initializeGoalsList() {
         goalsList = new ArrayList<>();
-        goalsList.add(new Goal("Exercise", 30, "Easy", false));
-        goalsList.add(new Goal("Meditation", 20, "Medium", false));
-        goalsList.add(new Goal("Water", 8, "None", false));
-        goalsList.add(new Goal("Exercise", 70, "Easy", true));
-        goalsList.add(new Goal("Meditation", 30, "Intense", false));
-        goalsList.add(new Goal("Water", 3, "None", true));
+        goalsList.add(new Goal("Exercise", 30, "Easy"));
+        goalsList.add(new Goal("Meditation", 20, "Medium"));
+        goalsList.add(new Goal("Water", 8, "None"));
+        goalsList.add(new Goal("Exercise", 70, "Easy"));
+        goalsList.add(new Goal("Meditation", 30, "Intense"));
+        goalsList.add(new Goal("Water", 3, "None"));
     }
 
     private void displayFilteredGoals(String goalType) {
