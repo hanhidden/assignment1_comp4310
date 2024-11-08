@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,7 @@ public class activity_set_goal extends AppCompatActivity {
     EditText inputField ;
     RadioGroup intensityGroup;
     Button saveGoalButton;
+    TextView savedGoalsTextView;
 
     ArrayList<Goal> goalsList;
 
@@ -36,7 +38,10 @@ public class activity_set_goal extends AppCompatActivity {
         inputField = findViewById(R.id.inputField);
         intensityGroup = findViewById(R.id.IntensityGroup);
         saveGoalButton = findViewById(R.id.saveGoalButton);
+        savedGoalsTextView = findViewById(R.id.savedGoalsTextView);
       goalsList = new ArrayList<>();
+//intilize
+        goalsList.add(new Goal("Meditation", 30, "Intense", false));
 
 
 
@@ -68,6 +73,14 @@ public class activity_set_goal extends AppCompatActivity {
             Toast.makeText(activity_set_goal.this, "Goal Saved: " + newGoal.toString(), Toast.LENGTH_SHORT).show();
 
 
+
+            StringBuilder goalsText = new StringBuilder("Saved Goals:\n");
+
+            for (Goal goal : goalsList) {
+                goalsText.append("- ").append(goal.toString()).append("\n");
+            }
+
+            savedGoalsTextView.setText(goalsText.toString());
 
         }
     });
