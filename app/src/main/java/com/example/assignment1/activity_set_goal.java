@@ -46,7 +46,7 @@ public class activity_set_goal extends AppCompatActivity {
 
 
 
-        String[] goals = {"Exercise", "Meditation", "Water Intake"};
+        String[] goals = {"Exercise", "Meditation", "Water"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, goals);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
